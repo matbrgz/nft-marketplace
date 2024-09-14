@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-
+import Link from "next/link"
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAccount, useNetwork } from '@hooks/web3';
 import ActiveLink from '../link';
-import Walletbar from './walletbar';
+import Walletbar from './Walletbar';
 
 const navigation = [
   { name: 'Marketplace', href: '/', current: true },
@@ -18,7 +18,7 @@ function classNames(...classes: string[]) {
 export default function Navbar() {
   const { account } = useAccount();
   const { network } = useNetwork();
-
+  console.log(account)
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -43,20 +43,16 @@ export default function Navbar() {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <ActiveLink
-                        activeClass="bg-gray-900"
+                      <Link
+                        className={
+                          'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                        }
+                        aria-current={item.current ? 'page' : undefined}
                         key={item.name}
                         href={item.href}
                       >
-                        <a
-                          className={
-                            'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
-                          }
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
-                      </ActiveLink>
+                        {item.name}
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -73,13 +69,12 @@ export default function Navbar() {
                     </svg>
                     {network.isLoading
                       ? 'Loading...'
-                      : account.isInstalled
-                      ? network.data
-                      : 'Install Web3 Wallet'}
+                      : network.data
+                    }
                   </span>
                 </div>
                 <Walletbar
-                  isInstalled={account.isInstalled}
+                  isInstalled={true}
                   isLoading={account.isLoading}
                   account={account.data}
                   connect={account.connect}

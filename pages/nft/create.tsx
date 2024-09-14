@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { ChangeEvent, useState } from 'react';
 import { BaseLayout } from '@ui';
 import { Switch } from '@headlessui/react';
-import Link from 'next/link';
+import Link from "next/link"
 import { NftMeta, PinataRes } from '@_types/nft';
 import axios from 'axios';
 import { useWeb3 } from '@providers/web3';
@@ -245,8 +245,8 @@ const NftCreate: NextPage = () => {
                     <div className="mb-4 p-4">
                       <div className="font-bold">Your metadata: </div>
                       <div>
-                        <Link href={nftURI}>
-                          <a className="underline text-indigo-600">{nftURI}</a>
+                        <Link href={nftURI} className="underline text-indigo-600">
+                          {nftURI}
                         </Link>
                       </div>
                     </div>

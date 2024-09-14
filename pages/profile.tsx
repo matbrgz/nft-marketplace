@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from 'next';
+import Link from "next/link"
 import { BaseLayout } from '@ui';
 import { Nft } from '@_types/nft';
 import { useOwnedNfts } from '@hooks/web3';
@@ -45,7 +46,7 @@ const Profile: NextPage = () => {
                         aria-label="Tabs"
                       >
                         {tabs.map((tab) => (
-                          <a
+                          <Link
                             key={tab.name}
                             href={tab.href}
                             aria-current={tab.current ? 'page' : undefined}
@@ -57,7 +58,7 @@ const Profile: NextPage = () => {
                             )}
                           >
                             {tab.name}
-                          </a>
+                          </Link>
                         ))}
                       </nav>
                     </div>

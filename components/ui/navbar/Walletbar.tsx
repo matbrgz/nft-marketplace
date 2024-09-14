@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link"
+
 import { FC } from 'react';
 import { Menu } from '@headlessui/react';
-import Link from 'next/link';
 
 type WalletbarProps = {
   isLoading: boolean;
@@ -24,7 +25,7 @@ const Walletbar: FC<WalletbarProps> = ({
     return (
       <div>
         <button
-          onClick={() => {}}
+          onClick={() => { }}
           type="button"
           className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
         >
@@ -63,15 +64,14 @@ const Walletbar: FC<WalletbarProps> = ({
           </Menu.Item>
           <Menu.Item>
             {({ active }) => (
-              <Link href="/profile">
-                <a
-                  className={classNames(
-                    active ? 'bg-gray-100' : '',
-                    'block px-4 py-2 text-sm text-gray-700'
-                  )}
-                >
-                  Profile
-                </a>
+              <Link
+                className={classNames(
+                  active ? 'bg-gray-100' : '',
+                  'block px-4 py-2 text-sm text-gray-700'
+                )}
+                href="/profile"
+              >
+                Profile
               </Link>
             )}
           </Menu.Item>
